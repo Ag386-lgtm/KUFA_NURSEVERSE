@@ -1,57 +1,79 @@
-// 1. إعدادات الفيديو (✏️ ضع رابط فيديو اليوتيوب هنا)
-const INTRO_VIDEO_ID = "dQw4w9WgXcQ"; // استبدل هذا برابط الفيديو الخاص بك
-const VIDEO_DURATION = 20; // مدة الفيديو بالثواني (لكي ينقلك تلقائياً)
-
-// 2. تشغيل الفيديو والانتقال التلقائي
-document.addEventListener("DOMContentLoaded", () => {
-    // فتح الواجهة الرئيسية افتراضياً
-    showPage('home');
-
-    // تشغيل الفيديو
-    const iframe = document.getElementById('mainVideo');
-    if (iframe) {
-        iframe.src = `https://www.youtube.com/embed/${INTRO_VIDEO_ID}?autoplay=1&mute=1`;
-    }
-
-    // الانتقال التلقائي بعد انتهاء الوقت
-    setTimeout(() => {
-        // التحقق من أن المستخدم لا يزال في الصفحة الرئيسية قبل النقل
-        if (document.getElementById('home').classList.contains('active')) {
-            showPage('departments');
-        }
-    }, VIDEO_DURATION * 1000);
-});
-
-// 3. التنقل بين الصفحات (الرئيسية ↔ الأقسام)
-function showPage(pageId) {
-    // إخفاء كل الصفحات
-    document.querySelectorAll('.container').forEach(c => c.classList.remove('active'));
-    // إظهار الصفحة المطلوبة
-    document.getElementById(pageId).classList.add('active');
-    // إغلاق القائمة الجانبية إذا كانت مفتوحة
-    closeSidebar();
-    // التمرير لأعلى الصفحة
-    window.scrollTo(0, 0);
+/* الألوان الأساسية للموقع */
+:root {
+    --primary: #0a4d8c; --primary-light: #1567b0; --accent: #00b8d4;
+    --bg: #f4f8fc; --surface: #ffffff; --text: #0d2438; --border: #d6e4f0;
+}
+/* ألوان الوضع الليلي */
+[data-theme="dark"] {
+    --primary: #1a8fe3; --accent: #29e0ff; --bg: #08141f;
+    --surface: #0f2338; --text: #e8f2fb; --border: #1d3b56;
 }
 
-// 4. التحكم في القائمة الجانبية (فتح/إغلاق)
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
-    document.getElementById('overlay').classList.toggle('active');
-}
-function closeSidebar() {
-    document.getElementById('sidebar').classList.remove('open');
-    document.getElementById('overlay').classList.remove('active');
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Cairo', sans-serif; }
+body { background-color: var(--bg); color: var(--text); transition: 0.3s; overflow-x: hidden; }
 
-// 5. الوضع الليلي والنهاري
-function toggleTheme() {
-    const html = document.documentElement;
-    if (html.getAttribute('data-theme') === 'dark') {
-        html.setAttribute('data-theme', 'light');
-        document.getElementById('themeBtn').innerText = '🌙';
-    } else {
-        html.setAttribute('data-theme', 'dark');
-        document.getElementById('themeBtn').innerText = '☀️';
-    }
+/* الهيدر */
+.main-header {
+    background: linear-gradient(135deg, #063459, var(--primary));
+    padding: 15px 25px; display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); position: sticky; top: 0; z-index: 900;
 }
+.logos img { width: 50px; height: 50px; border-radius: 50%; background: #fff; object-fit: cover; border: 2px solid rgba(255,255,255,0.5); margin-left: 8px; }
+.brand { text-align: center; color: #fff; }
+.brand h1 { font-size: 24px; font-weight: 900; letter-spacing: 2px; }
+.brand h1 span { color: var(--accent); }
+.brand p { font-size: 12px; opacity: 0.8; }
+.header-btns button { background: rgba(255,255,255,0.15); border: none; color: #fff; font-size: 18px; width: 45px; height: 45px; border-radius: 12px; cursor: pointer; margin-right: 8px; transition: 0.3s; }
+.header-btns button:hover { background: var(--accent); color: var(--primary); }
+
+/* القائمة الجانبية */
+.sidebar { position: fixed; top: 0; right: -320px; width: 300px; height: 100vh; background: var(--surface); z-index: 1000; transition: right 0.4s ease; box-shadow: -5px 0 20px rgba(0,0,0,0.1); border-left: 4px solid var(--accent); }
+.sidebar.open { right: 0; }
+.sidebar-header { background: linear-gradient(135deg, #063459, var(--primary)); padding: 20px; color: #fff; display: flex; justify-content: space-between; align-items: center; }
+.sidebar-header button { background: none; border: none; color: #fff; font-size: 20px; cursor: pointer; }
+.sidebar-links { padding: 20px; }
+.sidebar-links a { display: block; padding: 15px; margin-bottom: 8px; border-radius: 10px; color: var(--text); text-decoration: none; font-weight: bold; transition: 0.3s; }
+.sidebar-links a:hover { background: var(--primary); color: #fff; }
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); opacity: 0; pointer-events: none; transition: 0.3s; z-index: 950; }
+.overlay.active { opacity: 1; pointer-events: auto; }
+
+/* الحاوية والصفحات */
+.container { max-width: 1100px; margin: 40px auto; padding: 0 20px; display: none; }
+.container.active { display: block; animation: fadeIn 0.5s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* الصفحة الرئيسية */
+.video-box { width: 100%; aspect-ratio: 16/9; background: #000; border-radius: 20px; overflow: hidden; border: 5px solid var(--primary); box-shadow: 0 15px 40px rgba(10,77,140,0.3); margin-bottom: 40px; }
+.video-box iframe { width: 100%; height: 100%; border: none; }
+.welcome-text { background: var(--surface); padding: 50px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); text-align: center; border-top: 6px solid var(--accent); }
+.welcome-text h2 { font-size: 32px; color: var(--primary); margin-bottom: 10px; }
+.welcome-text .subtitle { color: var(--accent); font-size: 20px; font-weight: bold; margin-bottom: 30px; }
+.welcome-text p { font-size: 18px; line-height: 2; color: var(--text); margin-bottom: 20px; text-align: justify; }
+.welcome-text .final { background: rgba(0, 184, 212, 0.1); padding: 20px; border-right: 6px solid var(--accent); border-radius: 10px; font-weight: bold; font-size: 20px; color: var(--primary); }
+.btn-start { display: inline-block; margin-top: 35px; padding: 18px 60px; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; text-decoration: none; font-size: 22px; font-weight: 900; border-radius: 50px; box-shadow: 0 10px 25px rgba(0, 184, 212, 0.4); transition: 0.3s; cursor: pointer; border: none; }
+.btn-start:hover { transform: translateY(-5px) scale(1.05); }
+
+/* شبكة الأقسام */
+.page-title { text-align: center; font-size: 36px; color: var(--primary); margin-bottom: 40px; }
+.depts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+.dept-card { background: var(--surface); border-radius: 20px; overflow: hidden; text-decoration: none; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: 0.3s; border: 3px solid transparent; cursor: pointer; }
+.dept-card:hover { transform: translateY(-10px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(0,0,0,0.15); }
+.dept-img { width: 100%; aspect-ratio: 1/1; background-size: cover; background-position: center; }
+.dept-info { padding: 20px; text-align: center; }
+.dept-info span { background: var(--accent); color: #fff; padding: 3px 12px; border-radius: 20px; font-size: 12px; font-weight: bold; }
+.dept-info h3 { margin: 10px 0 5px; font-size: 20px; color: var(--text); }
+.dept-info p { font-size: 14px; color: var(--text); opacity: 0.7; }
+
+/* داخل صفحة القسم */
+.btn-back { background: var(--surface); border: 2px solid var(--border); color: var(--primary); padding: 10px 20px; border-radius: 30px; font-weight: bold; cursor: pointer; margin-bottom: 20px; font-size: 16px; font-family: inherit; transition: 0.3s; }
+.btn-back:hover { background: var(--primary); color: #fff; }
+.dept-actions { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.action-box { background: var(--surface); padding: 30px 20px; border-radius: 20px; text-align: center; box-shadow: 0 5px 15px rgba(0,0,0,0.05); cursor: pointer; transition: 0.3s; border: 3px solid transparent; }
+.action-box:hover { transform: translateY(-8px); border-color: var(--accent); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+.action-box .icon { font-size: 50px; margin-bottom: 15px; }
+.action-box h3 { color: var(--text); font-size: 20px; margin-bottom: 10px; }
+.action-box p { color: var(--text); opacity: 0.6; font-size: 14px; line-height: 1.6; }
+
+/* الصفحة الفارغة (لأكوادك) */
+.empty-box { background: var(--surface); padding: 60px 20px; border-radius: 20px; text-align: center; border: 4px dashed var(--accent); margin-top: 20px; }
+.empty-box h3 { color: var(--primary); font-size: 24px; }

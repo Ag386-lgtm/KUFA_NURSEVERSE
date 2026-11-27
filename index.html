@@ -1,74 +1,157 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KUFA NURSEVERSE | عالم التمريض التفاعلي</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/home.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUFA NURSEVERSE | عالم التمريض</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
-<body data-page="home">
+<body>
 
-  <!-- الهيدر -->
-  <header class="main-header">
-    <div class="header-inner">
-      <div class="logos">
-        <img id="logoCollege" alt="شعار الكلية" class="logo">
-        <img id="logoUniversity" alt="شعار الجامعة" class="logo">
-      </div>
-      <div class="brand">
-        <h1 class="brand-title">KUFA <span>NURSEVERSE</span></h1>
-        <p class="brand-sub" id="brandSub">كلية التمريض · جامعة الكوفة</p>
-      </div>
-      <div class="header-actions">
-        <button id="themeToggle" class="icon-btn" title="تبديل المظهر">🌙</button>
-        <button id="menuToggle"  class="icon-btn" title="القائمة">☰</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- القائمة الجانبية -->
-  <aside class="side-menu" id="sideMenu">
-    <div class="side-menu-header">
-      <h2>القائمة</h2>
-      <button id="closeMenu" class="icon-btn">✕</button>
-    </div>
-    <nav>
-      <a href="index.html" class="active">🏠 الرئيسية</a>
-      <a href="pages/departments.html">🔬 الأقسام العلمية</a>
-      <a href="pages/events.html">🎉 فعاليات الكلية</a>
-      <a href="pages/about.html">ℹ️ عن كلية التمريض</a>
-      <a href="pages/contact.html">📞 تواصل معنا</a>
-    </nav>
-  </aside>
-  <div class="overlay" id="overlay"></div>
-
-  <!-- المحتوى -->
-  <main class="home-main">
-    <section class="intro-video">
-      <div class="video-frame">
-        <div id="videoContainer" class="video-placeholder">
-          <p>🎬 سيتم تشغيل الفيديو التعريفي هنا</p>
-          <small>(أضف YouTube ID في assets/js/config.js)</small>
+    <!-- الهيدر (الشعارات + الاسم) -->
+    <header class="main-header">
+        <div class="logos">
+            <img src="IMG_20261127_060745_647.jpg" alt="شعار الجامعة">
+            <img src="IMG_20261127_060736_285.jpg" alt="شعار الكلية">
         </div>
-      </div>
-    </section>
+        <div class="brand">
+            <h1>KUFA <span>NURSEVERSE</span></h1>
+            <p>كلية التمريض · جامعة الكوفة</p>
+        </div>
+        <div class="header-btns">
+            <button id="themeBtn" onclick="toggleTheme()">🌙</button>
+            <button onclick="toggleSidebar()">☰</button>
+        </div>
+    </header>
 
-    <section class="welcome-section">
-      <h2 class="welcome-title" id="welcomeTitle"></h2>
-      <p class="welcome-tagline" id="welcomeTagline"></p>
-      <div class="welcome-body" id="welcomeBody"></div>
-      <a id="startBtn" class="btn-start" href="pages/departments.html"></a>
-    </section>
-  </main>
+    <!-- القائمة الجانبية -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>القائمة</h2>
+            <button onclick="closeSidebar()">✕</button>
+        </div>
+        <div class="sidebar-links">
+            <a href="#" class="active" onclick="showPage('home'); return false;">🏠 الرئيسية</a>
+            <a href="#" onclick="showPage('departments'); return false;">🔬 الأقسام العلمية</a>
+            <a href="#">🎉 فعاليات الكلية</a>
+            <a href="#">ℹ️ عن كلية التمريض</a>
+            <a href="https://www.facebook.com/share/1JKrLyMdea/" target="_blank">📞 تواصل معنا</a>
+        </div>
+    </aside>
+    <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
-  <footer class="main-footer">
-    <p>© 2026 KUFA NURSEVERSE — كلية التمريض · جامعة الكوفة</p>
-  </footer>
+    <!-- ═══════════ الصفحة 1: الرئيسية ═══════════ -->
+    <main class="container active" id="home">
+        
+        <!-- مكان الفيديو -->
+        <div class="video-box">
+            <iframe id="mainVideo" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
 
-  <script src="assets/js/config.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/home.js"></script>
+        <!-- النص الترحيبي -->
+        <div class="welcome-text">
+            <h2>أهلاً بك في KUFA NURSEVERSE</h2>
+            <p class="subtitle">هنا لا تكتفي بمشاهدة عالم التمريض، بل تصبح جزءاً منه!</p>
+            
+            <p>من أروقة كلية التمريض في جامعة الكوفة، تبدأ رحلتك لاكتشاف العلوم والمهارات التمريضية من خلال تجربة تعليمية تفاعلية تجمع بين المعرفة والتطبيق والاستكشاف.</p>
+            <p>تجوّل بين الأقسام العلمية، واكتشف المختبرات والتجارب العملية، واستكشف جسم الإنسان بتقنية ثلاثية الأبعاد، وخض التحديات التمريضية، ورافقنا في رحلات ميدانية إلى المؤسسات الصحية.</p>
+            <p>كل قسم يحمل معرفة، وكل تجربة تمنحك مهارة، وكل خطوة تقرّبك من صناعة الفرق.</p>
+            
+            <div class="final">مرحباً بك في عالم التمريض… حيث يبدأ العلم وتُصنع الحياة.</div>
+
+            <!-- زر البدء -->
+            <button class="btn-start" onclick="showPage('departments')">🚀 ابدأ رحلتك</button>
+        </div>
+    </main>
+
+    <!-- ═══════════ الصفحة 2: الأقسام العلمية ═══════════ -->
+    <main class="container" id="departments">
+        <h2 class="page-title">🔬 الأقسام العلمية</h2>
+        
+        <div class="depts-grid">
+            <!-- القسم 01 -->
+            <a href="#" class="dept-card">
+                <div class="dept-img" style="background-image: url('file_00000000744c8210877a89d3e83a3415.png');"></div>
+                <div class="dept-info">
+                    <span>01</span>
+                    <h3>أساسيات التمريض</h3>
+                    <p>Nursing Basics</p>
+                </div>
+            </a>
+
+            <!-- القسم 02 -->
+            <a href="#" class="dept-card">
+                <div class="dept-img" style="background-image: url('file_00000000daa88210b85d5eca679ff1a7.png');"></div>
+                <div class="dept-info">
+                    <span>02</span>
+                    <h3>الأحياء المجهرية</h3>
+                    <p>Microbiology</p>
+                </div>
+            </a>
+
+            <!-- القسم 03 -->
+            <a href="#" class="dept-card">
+                <div class="dept-img" style="background-image: url('file_0000000054088210a3542c07180e565c.png');"></div>
+                <div class="dept-info">
+                    <span>03</span>
+                    <h3>تمريض البالغين</h3>
+                    <p>Adult Nursing</p>
+                </div>
+            </a>
+
+            <!-- القسم 04 -->
+            <a href="#" class="dept-card">
+                <div class="dept-img" style="background-image: url('file_00000000f8708210a666a0619a3f9c29.png');"></div>
+                <div class="dept-info">
+                    <span>04</span>
+                    <h3>تمريض الأطفال</h3>
+                    <p>Pediatric Nursing</p>
+                </div>
+            </a>
+
+            <!-- القسم 05 -->
+            <a href="#" class="dept-card">
+                <div class="dept-img" style="background-image: url('file_0000000079588210814c97f6dd361e8b.png');"></div>
+                <div class="dept-info">
+                    <span>05</span>
+                    <h3>تمريض الأم والوليد</h3>
+                    <p>Maternal Nursing</p>
+                </div>
+            </a>
+
+            <!-- القسم 06 -->
+            <a href="#" class="dept-card">
+                <div class="dept-img" style="background-image: url('file_000000006b0c8210b4653217815d2533.png');"></div>
+                <div class="dept-info">
+                    <span>06</span>
+                    <h3>التمريض النفسي</h3>
+                    <p>Mental Health</p>
+                </div>
+            </a>
+
+            <!-- القسم 07 -->
+            <a href="#" class="dept-card">
+                <div class="dept-img" style="background-image: url('file_000000007f2082108968d9f2f753f734.png');"></div>
+                <div class="dept-info">
+                    <span>07</span>
+                    <h3>الحالات الحرجة</h3>
+                    <p>Critical Care</p>
+                </div>
+            </a>
+
+            <!-- القسم 08 -->
+            <a href="#" class="dept-card">
+                <div class="dept-img" style="background-image: url('file_00000000686482109116b44d853377b8.png');"></div>
+                <div class="dept-info">
+                    <span>08</span>
+                    <h3>صحة المجتمع</h3>
+                    <p>Community Health</p>
+                </div>
+            </a>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>

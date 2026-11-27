@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KUFA NURSEVERSE | عالم التمريض التفاعلي</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body data-page="home">
+
+  <!-- ══════════ الهيدر ══════════ -->
+  <header class="main-header">
+    <div class="header-inner">
+      <div class="logos">
+        <img src="assets/images/IMG_20261127_060736_285.jpg" alt="شعار كلية التمريض" class="logo">
+        <img src="assets/images/IMG_20261127_060745_647.jpg" alt="شعار جامعة الكوفة" class="logo">
+      </div>
+
+      <div class="brand">
+        <h1 class="brand-title">KUFA <span>NURSEVERSE</span></h1>
+        <p class="brand-sub">كلية التمريض · جامعة الكوفة</p>
+      </div>
+
+      <div class="header-actions">
+        <button id="themeToggle" class="icon-btn" title="تبديل المظهر">🌙</button>
+        <button id="menuToggle" class="icon-btn" title="القائمة">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════ القائمة الجانبية ══════════ -->
+  <aside class="side-menu" id="sideMenu">
+    <div class="side-menu-header">
+      <h2>القائمة</h2>
+      <button id="closeMenu" class="icon-btn">✕</button>
+    </div>
+    <nav>
+      <a href="index.html" class="active">🏠 الرئيسية</a>
+      <a href="pages/departments.html">🔬 الأقسام العلمية</a>
+      <a href="pages/events.html">🎉 فعاليات الكلية</a>
+      <a href="pages/about.html">ℹ️ عن كلية التمريض</a>
+      <a href="pages/contact.html">📞 تواصل معنا</a>
+    </nav>
+  </aside>
+  <div class="overlay" id="overlay"></div>
+
+  <!-- ══════════ المحتوى الرئيسي ══════════ -->
+  <main class="home-main">
+
+    <!-- الفيديو التعريفي -->
+    <section class="intro-video">
+      <div class="video-frame">
+        <div class="video-placeholder" id="videoContainer">
+          <!-- ✏️ ضع رابط الفيديو هنا لاحقاً -->
+          <iframe id="mainVideo" 
+                  src="" 
+                  data-video-url=""
+                  frameborder="0" 
+                  allow="autoplay; encrypted-media" 
+                  allowfullscreen
+                  style="display:none;"></iframe>
+          <div class="video-placeholder-content">
+            <p>🎬 سيتم تشغيل الفيديو التعريفي هنا</p>
+            <small>(أضف رابط YouTube في data-video-url)</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- نص الترحيب -->
+    <section class="welcome-section">
+      <h2 class="welcome-title">أهلاً بك في KUFA NURSEVERSE</h2>
+      <p class="welcome-tagline">
+        هنا لا تكتفي بمشاهدة عالم التمريض، بل تصبح جزءاً منه!
+      </p>
+
+      <div class="welcome-body">
+        <p>
+          من أروقة كلية التمريض في جامعة الكوفة، تبدأ رحلتك لاكتشاف العلوم والمهارات التمريضية
+          من خلال تجربة تعليمية تفاعلية تجمع بين المعرفة والتطبيق والاستكشاف.
+        </p>
+        <p>
+          تجوّل بين الأقسام العلمية، واكتشف المختبرات والتجارب العملية، واستكشف جسم الإنسان
+          بتقنية ثلاثية الأبعاد، وخض التحديات التمريضية، ورافقنا في رحلات ميدانية إلى المؤسسات الصحية.
+        </p>
+        <p>
+          كل قسم يحمل معرفة، وكل تجربة تمنحك مهارة، وكل خطوة تقرّبك من صناعة الفرق.
+        </p>
+        <p class="welcome-final">
+          مرحباً بك في عالم التمريض… حيث يبدأ العلم وتُصنع الحياة.
+        </p>
+      </div>
+
+      <a href="pages/departments.html" class="btn-start">🚀 ابدأ رحلتك</a>
+    </section>
+
+  </main>
+
+  <footer class="main-footer">
+    <p>© 2026 KUFA NURSEVERSE — كلية التمريض · جامعة الكوفة</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    /* ═══════════════════════════════════════════════════
+       ⚙️  تحويل تلقائي بعد انتهاء الفيديو
+       ✏️ ضع رابط الفيديو في data-video-url أعلاه (iframe ID=mainVideo)
+       وحدد مدة الفيديو بالثواني في VIDEO_DURATION
+    ═══════════════════════════════════════════════════ */
+    (function () {
+      const VIDEO_DURATION = 30; // ← ✏️ مدة الفيديو بالثواني (بدّلها)
+      const REDIRECT_URL   = 'pages/departments.html'; // ← ✏️ ينتقل هنا مباشرة
+
+      // إذا وضعت رابط فيديو حقيقي، استخدم YouTube API
+      const iframe = document.getElementById('mainVideo');
+      const url = iframe.dataset.videoUrl;
+
+      if (url) {
+        iframe.src = url;
+        iframe.style.display = 'block';
+        document.querySelector('.video-placeholder-content').style.display = 'none';
+        // ملاحظة: لتفعيل "الانتقال بعد الفيديو" استخدم YouTube IFrame API
+        // أو اترك المؤقّت أدناه:
+      }
+
+      // المؤقّت الاحتياطي (يعمل حتى بدون فيديو)
+      setTimeout(() => {
+        window.location.href = REDIRECT_URL;
+      }, VIDEO_DURATION * 1000 + 2000);
+    })();
+  </script>
+</body>
+</html>

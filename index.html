@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+here<!DOCTYPE html>
 <html lang="ar" dir="rtl" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -9,11 +9,11 @@
 </head>
 <body>
 
-    <!-- الهيدر (الشعارات + الاسم) -->
+    <!-- ═══════════ الهيدر ═══════════ -->
     <header class="main-header">
         <div class="logos">
-            <img src="IMG_20261127_060745_647.jpg" alt="شعار الجامعة">
-            <img src="IMG_20261127_060736_285.jpg" alt="شعار الكلية">
+            <img src="IMG_20261127_060745_647.jpg" alt="شعار الجامعة" onerror="this.style.display='none'">
+            <img src="IMG_20261127_060736_285.jpg" alt="شعار الكلية" onerror="this.style.display='none'">
         </div>
         <div class="brand">
             <h1>KUFA <span>NURSEVERSE</span></h1>
@@ -25,14 +25,14 @@
         </div>
     </header>
 
-    <!-- القائمة الجانبية -->
+    <!-- ═══════════ القائمة الجانبية ═══════════ -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h2>القائمة</h2>
             <button onclick="closeSidebar()">✕</button>
         </div>
         <div class="sidebar-links">
-            <a href="#" class="active" onclick="showPage('home'); return false;">🏠 الرئيسية</a>
+            <a href="#" onclick="showPage('home'); return false;">🏠 الرئيسية</a>
             <a href="#" onclick="showPage('departments'); return false;">🔬 الأقسام العلمية</a>
             <a href="#">🎉 فعاليات الكلية</a>
             <a href="#">ℹ️ عن كلية التمريض</a>
@@ -41,116 +41,240 @@
     </aside>
     <div class="overlay" id="overlay" onclick="closeSidebar()"></div>
 
-    <!-- ═══════════ الصفحة 1: الرئيسية ═══════════ -->
+    <!-- ═══════════ 1. الصفحة الرئيسية ═══════════ -->
     <main class="container active" id="home">
-        
-        <!-- مكان الفيديو -->
         <div class="video-box">
             <iframe id="mainVideo" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
-
-        <!-- النص الترحيبي -->
         <div class="welcome-text">
             <h2>أهلاً بك في KUFA NURSEVERSE</h2>
             <p class="subtitle">هنا لا تكتفي بمشاهدة عالم التمريض، بل تصبح جزءاً منه!</p>
-            
             <p>من أروقة كلية التمريض في جامعة الكوفة، تبدأ رحلتك لاكتشاف العلوم والمهارات التمريضية من خلال تجربة تعليمية تفاعلية تجمع بين المعرفة والتطبيق والاستكشاف.</p>
             <p>تجوّل بين الأقسام العلمية، واكتشف المختبرات والتجارب العملية، واستكشف جسم الإنسان بتقنية ثلاثية الأبعاد، وخض التحديات التمريضية، ورافقنا في رحلات ميدانية إلى المؤسسات الصحية.</p>
             <p>كل قسم يحمل معرفة، وكل تجربة تمنحك مهارة، وكل خطوة تقرّبك من صناعة الفرق.</p>
-            
             <div class="final">مرحباً بك في عالم التمريض… حيث يبدأ العلم وتُصنع الحياة.</div>
-
-            <!-- زر البدء -->
             <button class="btn-start" onclick="showPage('departments')">🚀 ابدأ رحلتك</button>
         </div>
     </main>
 
-    <!-- ═══════════ الصفحة 2: الأقسام العلمية ═══════════ -->
+    <!-- ═══════════ 2. صفحة الأقسام الثمانية ═══════════ -->
     <main class="container" id="departments">
         <h2 class="page-title">🔬 الأقسام العلمية</h2>
-        
         <div class="depts-grid">
-            <!-- القسم 01 -->
-            <a href="#" class="dept-card">
+            <!-- القسم 01: أساسيات -->
+            <a href="#" class="dept-card" onclick="showPage('dept-basics'); return false;">
                 <div class="dept-img" style="background-image: url('file_00000000744c8210877a89d3e83a3415.png');"></div>
-                <div class="dept-info">
-                    <span>01</span>
-                    <h3>أساسيات التمريض</h3>
-                    <p>Nursing Basics</p>
-                </div>
+                <div class="dept-info"><span>01</span><h3>أساسيات التمريض</h3><p>Nursing Basics</p></div>
             </a>
-
-            <!-- القسم 02 -->
-            <a href="#" class="dept-card">
+            <!-- القسم 02: أحياء -->
+            <a href="#" class="dept-card" onclick="showPage('dept-micro'); return false;">
                 <div class="dept-img" style="background-image: url('file_00000000daa88210b85d5eca679ff1a7.png');"></div>
-                <div class="dept-info">
-                    <span>02</span>
-                    <h3>الأحياء المجهرية</h3>
-                    <p>Microbiology</p>
-                </div>
+                <div class="dept-info"><span>02</span><h3>الأحياء المجهرية</h3><p>Microbiology</p></div>
             </a>
-
-            <!-- القسم 03 -->
-            <a href="#" class="dept-card">
+            <!-- القسم 03: بالغين -->
+            <a href="#" class="dept-card" onclick="showPage('dept-adult'); return false;">
                 <div class="dept-img" style="background-image: url('file_0000000054088210a3542c07180e565c.png');"></div>
-                <div class="dept-info">
-                    <span>03</span>
-                    <h3>تمريض البالغين</h3>
-                    <p>Adult Nursing</p>
-                </div>
+                <div class="dept-info"><span>03</span><h3>تمريض البالغين</h3><p>Adult Nursing</p></div>
             </a>
-
-            <!-- القسم 04 -->
-            <a href="#" class="dept-card">
+            <!-- القسم 04: أطفال -->
+            <a href="#" class="dept-card" onclick="showPage('dept-pediatric'); return false;">
                 <div class="dept-img" style="background-image: url('file_00000000f8708210a666a0619a3f9c29.png');"></div>
-                <div class="dept-info">
-                    <span>04</span>
-                    <h3>تمريض الأطفال</h3>
-                    <p>Pediatric Nursing</p>
-                </div>
+                <div class="dept-info"><span>04</span><h3>تمريض الأطفال</h3><p>Pediatric Nursing</p></div>
             </a>
-
-            <!-- القسم 05 -->
-            <a href="#" class="dept-card">
+            <!-- القسم 05: أم ووليد -->
+            <a href="#" class="dept-card" onclick="showPage('dept-maternal'); return false;">
                 <div class="dept-img" style="background-image: url('file_0000000079588210814c97f6dd361e8b.png');"></div>
-                <div class="dept-info">
-                    <span>05</span>
-                    <h3>تمريض الأم والوليد</h3>
-                    <p>Maternal Nursing</p>
-                </div>
+                <div class="dept-info"><span>05</span><h3>تمريض الأم والوليد</h3><p>Maternal Nursing</p></div>
             </a>
-
-            <!-- القسم 06 -->
-            <a href="#" class="dept-card">
+            <!-- القسم 06: نفسي -->
+            <a href="#" class="dept-card" onclick="showPage('dept-mental'); return false;">
                 <div class="dept-img" style="background-image: url('file_000000006b0c8210b4653217815d2533.png');"></div>
-                <div class="dept-info">
-                    <span>06</span>
-                    <h3>التمريض النفسي</h3>
-                    <p>Mental Health</p>
-                </div>
+                <div class="dept-info"><span>06</span><h3>التمريض النفسي</h3><p>Mental Health</p></div>
             </a>
-
-            <!-- القسم 07 -->
-            <a href="#" class="dept-card">
+            <!-- القسم 07: حرجة -->
+            <a href="#" class="dept-card" onclick="showPage('dept-critical'); return false;">
                 <div class="dept-img" style="background-image: url('file_000000007f2082108968d9f2f753f734.png');"></div>
-                <div class="dept-info">
-                    <span>07</span>
-                    <h3>الحالات الحرجة</h3>
-                    <p>Critical Care</p>
-                </div>
+                <div class="dept-info"><span>07</span><h3>الحالات الحرجة</h3><p>Critical Care</p></div>
             </a>
-
-            <!-- القسم 08 -->
-            <a href="#" class="dept-card">
+            <!-- القسم 08: مجتمع -->
+            <a href="#" class="dept-card" onclick="showPage('dept-community'); return false;">
                 <div class="dept-img" style="background-image: url('file_00000000686482109116b44d853377b8.png');"></div>
-                <div class="dept-info">
-                    <span>08</span>
-                    <h3>صحة المجتمع</h3>
-                    <p>Community Health</p>
-                </div>
+                <div class="dept-info"><span>08</span><h3>صحة المجتمع</h3><p>Community Health</p></div>
             </a>
         </div>
     </main>
+
+    <!-- ═══════════ 3. داخل الأقسام (الأزرار الأربعة) ═══════════ -->
+    
+    <!-- قسم 01: أساسيات التمريض -->
+    <main class="container" id="dept-basics">
+        <button class="btn-back" onclick="showPage('departments')">← رجوع للأقسام</button>
+        <h2 class="page-title">قسم أساسيات التمريض</h2>
+        <div class="dept-actions">
+            <div class="action-box" onclick="showPage('basics-video1')"><div class="icon">🎬</div><h3>تعرّف على الفرع</h3><p>فيديو تعريفي</p></div>
+            <div class="action-box" onclick="showPage('basics-video2')"><div class="icon">🩺</div><h3>الجانب العملي</h3><p>المهارات العملية</p></div>
+            <div class="action-box" onclick="showPage('basics-quiz')"><div class="icon">🎮</div><h3>اختبر معلوماتك</h3><p>ألعاب وتحديات</p></div>
+            <div class="action-box" onclick="showPage('basics-3d')"><div class="icon">🧬</div><h3>استكشف 3D</h3><p>مجسمات تفاعلية</p></div>
+        </div>
+    </main>
+
+    <!-- قسم 02: الأحياء المجهرية -->
+    <main class="container" id="dept-micro">
+        <button class="btn-back" onclick="showPage('departments')">← رجوع للأقسام</button>
+        <h2 class="page-title">قسم الأحياء المجهرية</h2>
+        <div class="dept-actions">
+            <div class="action-box" onclick="showPage('micro-video1')"><div class="icon">🎬</div><h3>تعرّف على الفرع</h3><p>فيديو تعريفي</p></div>
+            <div class="action-box" onclick="showPage('micro-video2')"><div class="icon">🩺</div><h3>الجانب العملي</h3><p>المهارات العملية</p></div>
+            <div class="action-box" onclick="showPage('micro-quiz')"><div class="icon">🎮</div><h3>اختبر معلوماتك</h3><p>ألعاب وتحديات</p></div>
+        </div>
+    </main>
+
+    <!-- قسم 03: البالغين -->
+    <main class="container" id="dept-adult">
+        <button class="btn-back" onclick="showPage('departments')">← رجوع للأقسام</button>
+        <h2 class="page-title">قسم تمريض البالغين</h2>
+        <div class="dept-actions">
+            <div class="action-box" onclick="showPage('adult-video1')"><div class="icon">🎬</div><h3>تعرّف على الفرع</h3><p>فيديو تعريفي</p></div>
+            <div class="action-box" onclick="showPage('adult-video2')"><div class="icon">🩺</div><h3>الجانب العملي</h3><p>المهارات العملية</p></div>
+            <div class="action-box" onclick="showPage('adult-quiz')"><div class="icon">🎮</div><h3>اختبر معلوماتك</h3><p>ألعاب وتحديات</p></div>
+        </div>
+    </main>
+
+    <!-- قسم 04: الأطفال -->
+    <main class="container" id="dept-pediatric">
+        <button class="btn-back" onclick="showPage('departments')">← رجوع للأقسام</button>
+        <h2 class="page-title">قسم تمريض الأطفال</h2>
+        <div class="dept-actions">
+            <div class="action-box" onclick="showPage('pediatric-video1')"><div class="icon">🎬</div><h3>تعرّف على الفرع</h3><p>فيديو تعريفي</p></div>
+            <div class="action-box" onclick="showPage('pediatric-video2')"><div class="icon">🩺</div><h3>الجانب العملي</h3><p>المهارات العملية</p></div>
+            <div class="action-box" onclick="showPage('pediatric-quiz')"><div class="icon">🎮</div><h3>اختبر معلوماتك</h3><p>ألعاب وتحديات</p></div>
+        </div>
+    </main>
+
+    <!-- قسم 05: الأم والوليد -->
+    <main class="container" id="dept-maternal">
+        <button class="btn-back" onclick="showPage('departments')">← رجوع للأقسام</button>
+        <h2 class="page-title">قسم تمريض الأم والوليد</h2>
+        <div class="dept-actions">
+            <div class="action-box" onclick="showPage('maternal-video1')"><div class="icon">🎬</div><h3>تعرّف على الفرع</h3><p>فيديو تعريفي</p></div>
+            <div class="action-box" onclick="showPage('maternal-video2')"><div class="icon">🩺</div><h3>الجانب العملي</h3><p>المهارات العملية</p></div>
+            <div class="action-box" onclick="showPage('maternal-quiz')"><div class="icon">🎮</div><h3>اختبر معلوماتك</h3><p>ألعاب وتحديات</p></div>
+            <div class="action-box" onclick="showPage('maternal-3d')"><div class="icon">🧬</div><h3>استكشف 3D</h3><p>مجسمات تفاعلية</p></div>
+        </div>
+    </main>
+
+    <!-- قسم 06: النفسي -->
+    <main class="container" id="dept-mental">
+        <button class="btn-back" onclick="showPage('departments')">← رجوع للأقسام</button>
+        <h2 class="page-title">قسم التمريض النفسي</h2>
+        <div class="dept-actions">
+            <div class="action-box" onclick="showPage('mental-video1')"><div class="icon">🎬</div><h3>تعرّف على الفرع</h3><p>فيديو تعريفي</p></div>
+            <div class="action-box" onclick="showPage('mental-video2')"><div class="icon">🩺</div><h3>الجانب العملي</h3><p>المهارات العملية</p></div>
+            <div class="action-box" onclick="showPage('mental-quiz')"><div class="icon">🎮</div><h3>اختبر معلوماتك</h3><p>ألعاب وتحديات</p></div>
+        </div>
+    </main>
+
+    <!-- قسم 07: الحالات الحرجة -->
+    <main class="container" id="dept-critical">
+        <button class="btn-back" onclick="showPage('departments')">← رجوع للأقسام</button>
+        <h2 class="page-title">قسم الحالات الحرجة</h2>
+        <div class="dept-actions">
+            <div class="action-box" onclick="showPage('critical-video1')"><div class="icon">🎬</div><h3>تعرّف على الفرع</h3><p>فيديو تعريفي</p></div>
+            <div class="action-box" onclick="showPage('critical-video2')"><div class="icon">🩺</div><h3>الجانب العملي</h3><p>المهارات العملية</p></div>
+            <div class="action-box" onclick="showPage('critical-quiz')"><div class="icon">🎮</div><h3>اختبر معلوماتك</h3><p>ألعاب وتحديات</p></div>
+        </div>
+    </main>
+
+    <!-- قسم 08: صحة المجتمع -->
+    <main class="container" id="dept-community">
+        <button class="btn-back" onclick="showPage('departments')">← رجوع للأقسام</button>
+        <h2 class="page-title">قسم صحة المجتمع</h2>
+        <div class="dept-actions">
+            <div class="action-box" onclick="showPage('community-video1')"><div class="icon">🎬</div><h3>تعرّف على الفرع</h3><p>فيديو تعريفي</p></div>
+            <div class="action-box" onclick="showPage('community-video2')"><div class="icon">🩺</div><h3>الجانب العملي</h3><p>المهارات العملية</p></div>
+            <div class="action-box" onclick="showPage('community-quiz')"><div class="icon">🎮</div><h3>اختبر معلوماتك</h3><p>ألعاب وتحديات</p></div>
+        </div>
+    </main>
+
+    <!-- ═══════════ 4. الصفحات الداخلية الفارغة (هنا تضع أكوادك) ═══════════ -->
+    
+    <!-- أساسيات التمريض: تعرّف -->
+    <main class="container" id="basics-video1">
+        <button class="btn-back" onclick="showPage('dept-basics')">← رجوع للقسم</button>
+        <h2 class="page-title">تعرّف على الفرع (أساسيات)</h2>
+        <div class="empty-box">
+            <h3>✏️ ضع كود الفيديو الأول هنا</h3>
+        </div>
+    </main>
+    <!-- أساسيات التمريض: عملي -->
+    <main class="container" id="basics-video2">
+        <button class="btn-back" onclick="showPage('dept-basics')">← رجوع للقسم</button>
+        <h2 class="page-title">الجانب العملي (أساسيات)</h2>
+        <div class="empty-box"><h3>✏️ ضع كود الفيديو الثاني هنا</h3></div>
+    </main>
+    <!-- أساسيات التمريض: اختبر -->
+    <main class="container" id="basics-quiz">
+        <button class="btn-back" onclick="showPage('dept-basics')">← رجوع للقسم</button>
+        <h2 class="page-title">اختبر معلوماتك (أساسيات)</h2>
+        <div class="empty-box"><h3>✏️ ضع كود اللعبة هنا</h3></div>
+    </main>
+    <!-- أساسيات التمريض: 3D -->
+    <main class="container" id="basics-3d">
+        <button class="btn-back" onclick="showPage('dept-basics')">← رجوع للقسم</button>
+        <h2 class="page-title">مجسمات 3D (أساسيات)</h2>
+        <div class="empty-box"><h3>✏️ ضع كود المجسمات هنا</h3></div>
+    </main>
+
+    <!-- الأحياء: تعرّف -->
+    <main class="container" id="micro-video1"><button class="btn-back" onclick="showPage('dept-micro')">← رجوع</button><h2 class="page-title">تعرّف (أحياء)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- الأحياء: عملي -->
+    <main class="container" id="micro-video2"><button class="btn-back" onclick="showPage('dept-micro')">← رجوع</button><h2 class="page-title">عملي (أحياء)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- الأحياء: اختبر -->
+    <main class="container" id="micro-quiz"><button class="btn-back" onclick="showPage('dept-micro')">← رجوع</button><h2 class="page-title">اختبر (أحياء)</h2><div class="empty-box"><h3>✏️ كود اللعبة</h3></div></main>
+
+    <!-- البالغين: تعرّف -->
+    <main class="container" id="adult-video1"><button class="btn-back" onclick="showPage('dept-adult')">← رجوع</button><h2 class="page-title">تعرّف (بالغين)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- البالغين: عملي -->
+    <main class="container" id="adult-video2"><button class="btn-back" onclick="showPage('dept-adult')">← رجوع</button><h2 class="page-title">عملي (بالغين)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- البالغين: اختبر -->
+    <main class="container" id="adult-quiz"><button class="btn-back" onclick="showPage('dept-adult')">← رجوع</button><h2 class="page-title">اختبر (بالغين)</h2><div class="empty-box"><h3>✏️ كود اللعبة</h3></div></main>
+
+    <!-- الأطفال: تعرّف -->
+    <main class="container" id="pediatric-video1"><button class="btn-back" onclick="showPage('dept-pediatric')">← رجوع</button><h2 class="page-title">تعرّف (أطفال)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- الأطفال: عملي -->
+    <main class="container" id="pediatric-video2"><button class="btn-back" onclick="showPage('dept-pediatric')">← رجوع</button><h2 class="page-title">عملي (أطفال)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- الأطفال: اختبر -->
+    <main class="container" id="pediatric-quiz"><button class="btn-back" onclick="showPage('dept-pediatric')">← رجوع</button><h2 class="page-title">اختبر (أطفال)</h2><div class="empty-box"><h3>✏️ كود اللعبة</h3></div></main>
+
+    <!-- الأم والوليد: تعرّف -->
+    <main class="container" id="maternal-video1"><button class="btn-back" onclick="showPage('dept-maternal')">← رجوع</button><h2 class="page-title">تعرّف (أم ووليد)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- الأم والوليد: عملي -->
+    <main class="container" id="maternal-video2"><button class="btn-back" onclick="showPage('dept-maternal')">← رجوع</button><h2 class="page-title">عملي (أم ووليد)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- الأم والوليد: اختبر -->
+    <main class="container" id="maternal-quiz"><button class="btn-back" onclick="showPage('dept-maternal')">← رجوع</button><h2 class="page-title">اختبر (أم ووليد)</h2><div class="empty-box"><h3>✏️ كود اللعبة</h3></div></main>
+    <!-- الأم والوليد: 3D -->
+    <main class="container" id="maternal-3d"><button class="btn-back" onclick="showPage('dept-maternal')">← رجوع</button><h2 class="page-title">3D (أم ووليد)</h2><div class="empty-box"><h3>✏️ كود المجسمات</h3></div></main>
+
+    <!-- النفسي: تعرّف -->
+    <main class="container" id="mental-video1"><button class="btn-back" onclick="showPage('dept-mental')">← رجوع</button><h2 class="page-title">تعرّف (نفسي)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- النفسي: عملي -->
+    <main class="container" id="mental-video2"><button class="btn-back" onclick="showPage('dept-mental')">← رجوع</button><h2 class="page-title">عملي (نفسي)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- النفسي: اختبر -->
+    <main class="container" id="mental-quiz"><button class="btn-back" onclick="showPage('dept-mental')">← رجوع</button><h2 class="page-title">اختبر (نفسي)</h2><div class="empty-box"><h3>✏️ كود اللعبة</h3></div></main>
+
+    <!-- الحرجة: تعرّف -->
+    <main class="container" id="critical-video1"><button class="btn-back" onclick="showPage('dept-critical')">← رجوع</button><h2 class="page-title">تعرّف (حرجة)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- الحرجة: عملي -->
+    <main class="container" id="critical-video2"><button class="btn-back" onclick="showPage('dept-critical')">← رجوع</button><h2 class="page-title">عملي (حرجة)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- الحرجة: اختبر -->
+    <main class="container" id="critical-quiz"><button class="btn-back" onclick="showPage('dept-critical')">← رجوع</button><h2 class="page-title">اختبر (حرجة)</h2><div class="empty-box"><h3>✏️ كود اللعبة</h3></div></main>
+
+    <!-- المجتمع: تعرّف -->
+    <main class="container" id="community-video1"><button class="btn-back" onclick="showPage('dept-community')">← رجوع</button><h2 class="page-title">تعرّف (مجتمع)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- المجتمع: عملي -->
+    <main class="container" id="community-video2"><button class="btn-back" onclick="showPage('dept-community')">← رجوع</button><h2 class="page-title">عملي (مجتمع)</h2><div class="empty-box"><h3>✏️ كود الفيديو</h3></div></main>
+    <!-- المجتمع: اختبر -->
+    <main class="container" id="community-quiz"><button class="btn-back" onclick="showPage('dept-community')">← رجوع</button><h2 class="page-title">اختبر (مجتمع)</h2><div class="empty-box"><h3>✏️ كود اللعبة</h3></div></main>
 
     <script src="script.js"></script>
 </body>
